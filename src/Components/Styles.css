@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.logindiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+}
+.logindiv div {
+    width: 60%;
+    max-width: 600px;
+    display: flex;
+    min-height: 300px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.425);
+    border-radius: 20px;
+    color: rgba(246, 230, 200, 0.862);
+}
+.logindiv div h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    background-color: rgb(37, 107, 142);
+}
+.logindiv div form {
+    display: flex;
+    flex-direction: column;
+    min-height: 50%;
+    margin: auto;
+}
+.logindiv div form label {
+    color: rgb(167, 167, 167);
+    font-size: 0.8em;
+}
+.logindiv div form input {
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: black;
+    background-color: gainsboro;
+}
+.logindiv div form button {
+    width: 50%;
+    min-width: 70px;
+    margin: auto;
+    padding: 3px;
+    background-color: cadetblue;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+}
+.logindiv div form button:hover {
+    background-color: aquamarine;
+}
+.logindiv div > button {
+    margin-bottom: 8px;
+    padding: 3px;
+    border: 1px solid rgb(52, 139, 117);
+    border-radius: 8px;
+    font-size: 0.8em;
+}
+.logindiv div > button:hover {
+    background-color: rgb(52, 139, 117);
+    color: black;
+}
+#divHome {
+    min-height: 100vh;
+}
+#divHome nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: blanchedalmond;
+    margin: 10px;
+}
+#divHome nav button {
+    background-color: darkslategray;
+    padding: 6px;
+    border-radius: 6px;
+}
+#divHome nav button:hover {
+    background-color: rgba(165, 42, 42, 0.665);
+}
+#divSubjects {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.508);
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
+#divSubjects span {
+    background-color: rgba(95, 158, 160, 0.535);
+    color: cornsilk;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    padding: 10px;
+}
+#divSubjects span h2 {
+    min-width: 60px;
+    color: rgb(181, 255, 246);
+}
+#divSubjects span h3 {
+    min-width: fit-content;
+}
+#divSubjects span div {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: unset;
+}
+#divSubjects span div input {
+    width: 40px;
+    min-width: 40px;
+    background-color: rgba(95, 158, 160, 0.743);
+    text-align: center;
+    border-radius: 6px;
+}
+#divSubjects span div form {
+    display: flex;
+    min-width: 80px;
+}
+#divSubjects span div form input {
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.253);
+    border: 1px solid rgb(25, 140, 189);
+    text-align: center;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+#divSubjects span button {
+    padding: 4px;
+    border-radius: 5px;
+}
+@media screen and (max-width: 900px){
+    #divSubjects span {
+        flex-direction: column;
+    }
+    #divSubjects span div {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 450px) {
+    .logindiv div {
+        width: 90%;
+    }
+    #divHome nav {
+        flex-direction: column;
+    }
+    #divSubjects {
+        width: 100%;
+        background-color: unset;
+    }
+}

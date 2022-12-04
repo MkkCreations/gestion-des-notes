@@ -1,1 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div {
+    width: 100%;
+    background-color: rgba(17, 50, 65, 1);
+}
+.circulo1 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    background-color: rgba(165, 42, 42, 0.557);
+    filter: blur(250px);
+}
+.circulo2 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: -100px;
+    left: -100px;
+    background-color: rgba(165, 42, 42, 0.557);
+    filter: blur(250px);
+}
 
+h1 {
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 5%;
+    padding-top: 1%;
+    font-size: 2.3em;
+    font-weight: 800;
+    color: rgb(89, 131, 162);
+}

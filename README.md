@@ -68,3 +68,32 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+  const Ressources = [
+    {id:3.01, subj: "Initiation au développement", note: [17,18]},
+    {id:3.02, subj: "Développement d'interfaces web", note: [12]},
+    {id:3.03, subj: "Développement orienté objets", note: [13]},
+    {id:3.04, subj: "Développement d'applications avec IHM", note: [20]},
+    {id:3.05, subj: "Qualité de developpement", note: [[34]]},
+    {id:3.06, subj: "Anglais technique", note: [[34]]},
+    {id:3.07, subj: "Bases de la communication", note: [34]},
+    {id:3.08, subj: "Introduction à l'rchitecture des ordinateurs", note: [34]},
+    {id:3.09, subj: "Intro. aux syst. d'expl.", note: [34]},
+    {id:3.10, subj: "Mathématiques discrètes", note: [34]},
+    {id:3.11, subj: "Outils mathématiques fondamentaux", note: [34]},
+    {id:3.12, subj: "Comm et fonctionnment bas niveau", note: [34]},
+    {id:3.13, subj: "Graphes", note: [34]},
+    {id:3.14, subj: "Méthodes Numériques", note: [34]},
+    {id:3.15, subj: "Introduction aux services réseaux", note: [34]},
+    {id:3.16, subj: "Introduction aux base de données et SQL", note: [34]},
+    {id:3.17, subj: "Economie durable et numérique", note: [34]},
+    {id:3.18, subj: "Exploitation d'une base de données", note: [34]},
+    {id:3.19, subj: "Outils numériques pour les statistiques desc", note: [34]},
+    {id:3.20, subj: "Gestion de projet et des organisations", note: [34]},
+    {id:3.21, subj: "Projet professionnel et personnel", note: [34]},
+    {id:3.22, subj: "Droit des contrats et du numérique", note: [34]},
+
+  ]
