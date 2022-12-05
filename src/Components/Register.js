@@ -40,7 +40,7 @@ function Register() {
           <input 
             type='email' 
             name='email'
-            placeholder='youremail@company.ltd' 
+            placeholder='youremail@exemple.com' 
             onChange={handleChange}
           />
 
