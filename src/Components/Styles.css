@@ -97,6 +97,22 @@
     border-radius: 10px;
     margin: auto;
 }
+#divSubjects >div {
+    display: flex;
+}
+#divSubjects > div div {
+    min-height: 50px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.3em;
+    background-color: bisque;
+    margin: 5px;
+}
+#divSubjects > div div p {
+    font-size: 1.3em;
+    color: rgb(255, 232, 204);
+    background-color: rgb(97, 142, 170);
+}
 #divSubjects span {
     background-color: rgba(95, 158, 160, 0.535);
     color: cornsilk;
