@@ -63,7 +63,8 @@ function Home() {
       setArrayNotes(notesFetched);
     }
     fetchNotes();
-  }, []);
+    
+  }, [])
 
   if(loading) return <h1>Loading</h1>
   return (

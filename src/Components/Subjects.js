@@ -6,8 +6,9 @@ import './Styles.css';
 const firestore = getFirestore(app);
 
 
-const Subjects = ({notes, setArrayNotes, email, userData}) => {
+const Subjects = ({notes, setArrayNotes, email}) => {
     const [valorInput, setValorInput] = useState();
+    const [notesUE, setNotesUE] = useState([]);
     
     async function handleSuprmir (id) {
         id.note.pop();
@@ -19,12 +20,12 @@ const Subjects = ({notes, setArrayNotes, email, userData}) => {
         
         await updateDoc(docuRef, {Ressources: [...newNote]});
         await setArrayNotes(newNote);
+        calcul();
     }
     
     async function handleEdit(e) {
         e.preventDefault();
-        console.log(e)
-        console.log(e.nativeEvent.path[2].childNodes[0].data);
+        console.log(e);
         
         if(isNaN(valorInput)) {return console.log(null);}
         else {
@@ -41,6 +42,7 @@ const Subjects = ({notes, setArrayNotes, email, userData}) => {
             await setArrayNotes(newNote);
         }
         e.nativeEvent.path[0][0].value = '';
+        calcul();
         
     }
     
@@ -49,48 +51,48 @@ const Subjects = ({notes, setArrayNotes, email, userData}) => {
         setValorInput(val.target.value);
     }
     
-    let ue31 = 0;
-    let ue32 = 0;
-    let ue33 = 0;
-    let ue34 = 0;
-    let ue35 = 0;
-    let ue36 = 0;
     async function calcul() {
+        let ue31 = 0;
+        let ue32 = 0;
+        let ue33 = 0;
+        let ue34 = 0;
+        let ue35 = 0;
+        let ue36 = 0;
         
         for (const key in notes) {
             if (notes[key].coef31) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue31 += notes[key].coef31 * notes[key].note[i];
-                    
+                    ue31 += (notes[key].coef31 * notes[key].note[i])/notes[key].note.length;
+                    console.log(ue31);
                 }
             }
             if (notes[key].coef32) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue32 += notes[key].coef32 * notes[key].note[i];
+                    ue32 += (notes[key].coef32 * notes[key].note[i])/notes[key].note.length;
                     
                 }
             }
             if (notes[key].coef33) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue33 += notes[key].coef33 * notes[key].note[i];
+                    ue33 += (notes[key].coef33 * notes[key].note[i])/notes[key].note.length;
                     
                 }
             }
             if (notes[key].coef34) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue34 += notes[key].coef34 * notes[key].note[i];
+                    ue34 += (notes[key].coef34 * notes[key].note[i])/notes[key].note.length;
                     
                 }
             }
             if (notes[key].coef35) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue35 += notes[key].coef35 * notes[key].note[i];
+                    ue35 += (notes[key].coef35 * notes[key].note[i])/notes[key].note.length;
                     
                 }
             }
             if (notes[key].coef36) {
                 for (let i = 0; i < notes[key].note.length; i++) {
-                    ue36 += notes[key].coef36 * notes[key].note[i];
+                    ue36 += (notes[key].coef36 * notes[key].note[i])/notes[key].note.length;
                     
                 }
             }
@@ -102,27 +104,25 @@ const Subjects = ({notes, setArrayNotes, email, userData}) => {
         ue34 = (ue34/100).toFixed(2);
         ue35 = (ue35/100).toFixed(2);
         ue36 = (ue36/100).toFixed(2);
-        
+
+        setNotesUE(res => [ue31,ue32,ue33,ue34,ue35,ue36]);
+
     }
-    
 
     useEffect(() => {
-        async function fetchNotes() {
-          const notesFetched = await userData(email);
-          setArrayNotes(notesFetched);
-        }
-        fetchNotes();
-    }, [notes, calcul()]);
+        calcul();
+        console.log("Subjects");
+    }, [])
 
     return (
         <div id="divSubjects">
             <div>
-                <div style={{backgroundColor: ue31>=6? 'green': '#b51a1a'}}><p>UE 3.1:</p> {ue31} /12</div>
-                <div style={{backgroundColor: ue32>=6? 'green': '#b51a1a'}}><p>UE 3.2:</p> {ue32} /12</div>
-                <div style={{backgroundColor: ue33>=6? 'green': '#b51a1a'}}><p>UE 3.3:</p> {ue33} /12</div>
-                <div style={{backgroundColor: ue34>=6? 'green': '#b51a1a'}}><p>UE 3.4:</p> {ue34} /12</div>
-                <div style={{backgroundColor: ue35>=6? 'green': '#b51a1a'}}><p>UE 3.5:</p> {ue35} /12</div>
-                <div style={{backgroundColor: ue36>=6? 'green': '#b51a1a'}}><p>UE 3.6:</p> {ue36} /12</div>
+                <div style={{backgroundColor: notesUE[0]>=6? 'green': '#b51a1a'}}><p>UE 3.1:</p> {notesUE[0]} /12</div>
+                <div style={{backgroundColor: notesUE[1]>=6? 'green': '#b51a1a'}}><p>UE 3.2:</p> {notesUE[1]} /12</div>
+                <div style={{backgroundColor: notesUE[2]>=6? 'green': '#b51a1a'}}><p>UE 3.3:</p> {notesUE[2]} /12</div>
+                <div style={{backgroundColor: notesUE[3]>=6? 'green': '#b51a1a'}}><p>UE 3.4:</p> {notesUE[3]} /12</div>
+                <div style={{backgroundColor: notesUE[4]>=6? 'green': '#b51a1a'}}><p>UE 3.5:</p> {notesUE[4]} /12</div>
+                <div style={{backgroundColor: notesUE[5]>=6? 'green': '#b51a1a'}}><p>UE 3.6:</p> {notesUE[5]} /12</div>
             </div>
             
             {notes.map((subj) => {
