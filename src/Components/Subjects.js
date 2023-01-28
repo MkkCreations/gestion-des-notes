@@ -31,7 +31,7 @@ const Subjects = ({notes, setArrayNotes, email}) => {
         else {
             let index;
             for (const key in notes) {
-                if(notes[key].id === Number(e.nativeEvent.path[2].childNodes[0].innerHTML)) index = key;
+                if(notes[key].id === Number(e.nativeEvent.target[0].value)) index = key;
             }
             console.log(notes[index]);
             notes[index].note.push(Number(valorInput));
