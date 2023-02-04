@@ -31,7 +31,7 @@ const Subjects = ({notes, setArrayNotes, email}) => {
         else {
             let index;
             for (const key in notes) {
-                if(notes[key].id === Number(e.nativeEvent.target[0].value)) index = key;
+                if(notes[key].id === Number(e.nativeEvent.target.parentNode.parentNode.firstChild.outerText)) index = key;
             }
             console.log(notes[index]);
             notes[index].note.push(Number(valorInput));
@@ -41,7 +41,7 @@ const Subjects = ({notes, setArrayNotes, email}) => {
             await updateDoc(docuRef, {Ressources: [...newNote]});
             await setArrayNotes(newNote);
         }
-        e.nativeEvent.path[0][0].value = '';
+        e.nativeEvent.target[0].value = '';
         calcul();
         
     }
@@ -63,37 +63,31 @@ const Subjects = ({notes, setArrayNotes, email}) => {
             if (notes[key].coef31) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue31 += (notes[key].coef31 * notes[key].note[i])/notes[key].note.length;
-                    console.log(ue31);
                 }
             }
             if (notes[key].coef32) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue32 += (notes[key].coef32 * notes[key].note[i])/notes[key].note.length;
-                    
                 }
             }
             if (notes[key].coef33) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue33 += (notes[key].coef33 * notes[key].note[i])/notes[key].note.length;
-                    
                 }
             }
             if (notes[key].coef34) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue34 += (notes[key].coef34 * notes[key].note[i])/notes[key].note.length;
-                    
                 }
             }
             if (notes[key].coef35) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue35 += (notes[key].coef35 * notes[key].note[i])/notes[key].note.length;
-                    
                 }
             }
             if (notes[key].coef36) {
                 for (let i = 0; i < notes[key].note.length; i++) {
                     ue36 += (notes[key].coef36 * notes[key].note[i])/notes[key].note.length;
-                    
                 }
             }
             
@@ -106,23 +100,22 @@ const Subjects = ({notes, setArrayNotes, email}) => {
         ue36 = (ue36/100).toFixed(2);
 
         setNotesUE(res => [ue31,ue32,ue33,ue34,ue35,ue36]);
-
+        console.log(notesUE);
     }
 
     useEffect(() => {
         calcul();
-        console.log("Subjects");
     }, [])
 
     return (
         <div id="divSubjects">
             <div>
-                <div style={{backgroundColor: notesUE[0]>=6? 'green': '#b51a1a'}}><p>UE 3.1:</p> {notesUE[0]} /12</div>
-                <div style={{backgroundColor: notesUE[1]>=6? 'green': '#b51a1a'}}><p>UE 3.2:</p> {notesUE[1]} /12</div>
-                <div style={{backgroundColor: notesUE[2]>=6? 'green': '#b51a1a'}}><p>UE 3.3:</p> {notesUE[2]} /12</div>
-                <div style={{backgroundColor: notesUE[3]>=6? 'green': '#b51a1a'}}><p>UE 3.4:</p> {notesUE[3]} /12</div>
-                <div style={{backgroundColor: notesUE[4]>=6? 'green': '#b51a1a'}}><p>UE 3.5:</p> {notesUE[4]} /12</div>
-                <div style={{backgroundColor: notesUE[5]>=6? 'green': '#b51a1a'}}><p>UE 3.6:</p> {notesUE[5]} /12</div>
+                <div style={{backgroundColor: notesUE[0]>=10? 'green': '#b51a1a'}}><p>UE 3.1:</p> {notesUE[0]} /20</div>
+                <div style={{backgroundColor: notesUE[1]>=10? 'green': '#b51a1a'}}><p>UE 3.2:</p> {notesUE[1]} /20</div>
+                <div style={{backgroundColor: notesUE[2]>=10? 'green': '#b51a1a'}}><p>UE 3.3:</p> {notesUE[2]} /20</div>
+                <div style={{backgroundColor: notesUE[3]>=10? 'green': '#b51a1a'}}><p>UE 3.4:</p> {notesUE[3]} /20</div>
+                <div style={{backgroundColor: notesUE[4]>=10? 'green': '#b51a1a'}}><p>UE 3.5:</p> {notesUE[4]} /20</div>
+                <div style={{backgroundColor: notesUE[5]>=10? 'green': '#b51a1a'}}><p>UE 3.6:</p> {notesUE[5]} /20</div>
             </div>
             
             {notes.map((subj) => {

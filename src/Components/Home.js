@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import { useAuth } from '../context/authContext'
+import React, {useState, useEffect} from 'react';
+import { useAuth } from '../context/authContext';
 import Subjects from './Subjects';
-import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
+import {getFirestore, doc, getDoc, setDoc, collection} from 'firebase/firestore';
 import { app } from '../firebase';
 
 
@@ -9,7 +9,7 @@ function Home() {
   const {user, logout, loading} = useAuth();
   const [arrayNotes, setArrayNotes] = useState(null);
 
-  const firestore = getFirestore(app)
+  const firestore = getFirestore(app);
 
   const handleLogOut = async () => {
     await logout();
@@ -38,6 +38,12 @@ function Home() {
     {id:3.20, subj: "Gestion de projet et des organisations", note: [], coef34: 6, coef35: 28.5, coef36: 5.5},
     {id:3.21, subj: "Projet professionnel et personnel", note: [], coef36: 11},
     {id:3.22, subj: "Droit des contrats et du numérique", note: [], coef36: 8.5},
+    {id:'SAE 3.01', subj: "Développement d`une application", note: [], coef31: 40},
+    {id:'SAE 3.02', subj: "Exploration algorithmique d`un problème", note: [], coef32: 40},
+    {id:'SAE 3.03', subj: "Installation de services réseau", note: [], coef33: 40},
+    {id:'SAE 3.04', subj: "Exploitation d`une base de données", note: [], coef34: 40},
+    {id:'SAE 3.05', subj: "Gestion d`un projet", note: [], coef35: 40},
+    {id:'SAE 3.06', subj: "Organisation d`un travail d`équipe", note: [], coef36: 40},
   ]
 
   async function userData(iduser) {
@@ -46,6 +52,10 @@ function Home() {
 
     if(consulta.exists()) {
       const infoDoc = consulta.data();
+
+      if (consulta._document.data.value.mapValue.fields.Ressources.arrayValue.values.length === 22) {
+        await setDoc(docuRef, {Ressources: [...Ressources]},{merge: true});
+      }
       return infoDoc.Ressources;
     } else{
       await setDoc(docuRef, {Ressources: [...Ressources]});
@@ -53,7 +63,6 @@ function Home() {
       const infoDoc = consulta.data();
       return infoDoc.Ressources;
     }
-    
   }
   
   useEffect(() => {
@@ -63,7 +72,6 @@ function Home() {
       setArrayNotes(notesFetched);
     }
     fetchNotes();
-    
   }, [])
 
   if(loading) return <h1>Loading</h1>
